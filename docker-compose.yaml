@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  postgres:
+    build: .
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+       - "pg_data:/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5432:5432"
+volumes:
+  pg_data:
